@@ -1,0 +1,175 @@
+﻿<Window x:Class="WpfApp11.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:behaviors="clr-namespace:WpfApp11"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="345" Width="620"
+        Loaded="Window_Loaded"
+        PreviewKeyDown="Window_PreviewKeyDown"
+        ResizeMode="NoResize"
+        >
+        
+    <StackPanel Orientation="Vertical" >
+        <StackPanel Orientation="Horizontal">
+            <Label Name="LBSpeed" Margin="0, 0, 0, 0">Speed:</Label>
+            <Label Name="LBSpeedNumber" Margin="0, 0, 0, 0">0</Label>
+            <Label Name="LBSpeedText" Margin="0, 0, 40, 0">chars/min</Label>
+            <Label Name="LBFails" Margin="0, 0, 0, 0">Fails:</Label>
+            <Label Name="LBFailsNumber" Margin="0, 0, 120, 0">0</Label>
+            <Label Margin="0, 0, 5, 0">Difficulty:</Label>
+            <Label Name="DifficultyValue" Margin="0, 0, 10, 0">1</Label>
+            <Slider x:Name="SliderDifficulty" Margin="0, 0, 10, 0" Width="60" Minimum="1" Maximum="3" IsSnapToTickEnabled="True" TickFrequency="1" ValueChanged="Slider_ValueChanged"></Slider>
+            <CheckBox Name="CBCaseSensetive">Case Sensetive</CheckBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Width="135" Click="StartBtnClick">Start</Button>
+            <Button Width="135" Click="StopBtnClick">Stop</Button>
+        </StackPanel>
+        <TextBox TextChanged="TBContent_TextChanged" IsReadOnly="True" x:Name="TBContent" Height="50" Background="Aqua" FontSize="22" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource RedBtn}" Grid.Column="0">`</Button>
+                <Button Style="{StaticResource RedBtn}" Grid.Column="1">1</Button>
+                <Button Style="{StaticResource RedBtn}" Grid.Column="2">2</Button>
+                <Button Style="{StaticResource YellowBtn}" Grid.Column="3">3</Button>
+                <Button Style="{StaticResource GreenBtn}" Grid.Column="4">4</Button>
+                <Button Style="{StaticResource BlueBtn}" Grid.Column="5">5</Button>
+                <Button Style="{StaticResource BlueBtn}" Grid.Column="6">6</Button>
+                <Button Style="{StaticResource PurpleBtn}" Grid.Column="7">7</Button>
+                <Button Style="{StaticResource PurpleBtn}" Grid.Column="8">8</Button>
+                <Button Style="{StaticResource RedBtn}" Grid.Column="9">9</Button>
+                <Button Style="{StaticResource YellowBtn}" Grid.Column="10">0</Button>
+                <Button Style="{StaticResource GreenBtn}" Grid.Column="11">-</Button>
+                <Button Style="{StaticResource GreenBtn}" Grid.Column="12">=</Button>
+                <Button Style="{StaticResource GrayBtn}" Grid.Column="13">Backspace</Button>
+        </Grid>
+        <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource GrayBtn}" Click="InputBtnClick" Grid.Column="0">Tab</Button>
+                <Button Style="{StaticResource RedBtn}" Click="InputBtnClick" Grid.Column="1">q</Button>
+                <Button Style="{StaticResource YellowBtn}" Click="InputBtnClick" Grid.Column="2">w</Button>
+                <Button Style="{StaticResource GreenBtn}" Click="InputBtnClick" Grid.Column="3">e</Button>
+                <Button Style="{StaticResource BlueBtn}" Click="InputBtnClick" Grid.Column="4">r</Button>
+                <Button Style="{StaticResource BlueBtn}" Click="InputBtnClick" Grid.Column="5">t</Button>
+                <Button Style="{StaticResource PurpleBtn}" Click="InputBtnClick" Grid.Column="6">y</Button>
+                <Button Style="{StaticResource PurpleBtn}" Click="InputBtnClick" Grid.Column="7">u</Button>
+                <Button Style="{StaticResource RedBtn}" Click="InputBtnClick" Grid.Column="8">i</Button>
+                <Button Style="{StaticResource YellowBtn}" Click="InputBtnClick" Grid.Column="9">o</Button>
+                <Button Style="{StaticResource GreenBtn}" Click="InputBtnClick" Grid.Column="10">p</Button>
+                <Button Style="{StaticResource GreenBtn}" Click="InputBtnClick" Grid.Column="11">[</Button>
+                <Button Style="{StaticResource GreenBtn}" Click="InputBtnClick" Grid.Column="12">]</Button>
+                <Button Style="{StaticResource GreenBtn}" Click="InputBtnClick" Grid.Column="13">\</Button>
+        </Grid>
+        <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource GrayBtn}" Click="InputBtnClick" Name="Zero" Grid.Column="0">Caps Lock</Button>
+                <Button Style="{StaticResource RedBtn}"  Grid.Column="1" Click="InputBtnClick">a</Button>
+                <Button Style="{StaticResource YellowBtn}" Click="InputBtnClick" Grid.Column="2">s</Button>
+                <Button Style="{StaticResource GreenBtn}" Click="InputBtnClick" Grid.Column="3">d</Button>
+                <Button Style="{StaticResource BlueBtn}" Click="InputBtnClick" Grid.Column="4">f</Button>
+                <Button Style="{StaticResource BlueBtn}" Click="InputBtnClick" Grid.Column="5">g</Button>
+                <Button Style="{StaticResource PurpleBtn}" Click="InputBtnClick" Grid.Column="6">h</Button>
+                <Button Style="{StaticResource PurpleBtn}" Click="InputBtnClick" Grid.Column="7">j</Button>
+                <Button Style="{StaticResource RedBtn}" Click="InputBtnClick" Grid.Column="8">k</Button>
+                <Button Style="{StaticResource YellowBtn}" Click="InputBtnClick" Grid.Column="9">l</Button>
+                <Button Style="{StaticResource GreenBtn}" Click="InputBtnClick" Grid.Column="10">;</Button>
+                <Button Style="{StaticResource GreenBtn}" Click="InputBtnClick" Grid.Column="11">'</Button>
+                <Button Style="{StaticResource GrayBtn}" Click="InputBtnClick" Grid.Column="12">Enter</Button>
+        </Grid>
+        <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource GrayBtn}" Click="InputBtnClick" Grid.Column="0">Shift</Button>
+                <Button Style="{StaticResource RedBtn}" Click="InputBtnClick" Grid.Column="1">z</Button>
+                <Button Style="{StaticResource YellowBtn}" Click="InputBtnClick" Grid.Column="2">x</Button>
+                <Button Style="{StaticResource GreenBtn}" Click="InputBtnClick" Grid.Column="3">c</Button>
+                <Button Style="{StaticResource BlueBtn}" Click="InputBtnClick" Grid.Column="4">v</Button>
+                <Button Style="{StaticResource BlueBtn}" Click="InputBtnClick" Grid.Column="5">b</Button>
+                <Button Style="{StaticResource PurpleBtn}" Click="InputBtnClick" Grid.Column="6">n</Button>
+                <Button Style="{StaticResource PurpleBtn}" Click="InputBtnClick" Grid.Column="7">m</Button>
+                <Button Style="{StaticResource RedBtn}" Click="InputBtnClick" Grid.Column="8">,</Button>
+                <Button Style="{StaticResource YellowBtn}" Click="InputBtnClick" Grid.Column="9">.</Button>
+                <Button Style="{StaticResource GreenBtn}" Click="InputBtnClick" Grid.Column="10">/</Button>
+                <Button Style="{StaticResource GrayBtn}" Click="InputBtnClick" Grid.Column="11">Shift</Button>
+        </Grid>
+        <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource GrayBtn}" Click="InputBtnClick" Grid.Column="0">Ctrl</Button>
+                <Button Style="{StaticResource GrayBtn}" Click="InputBtnClick" Grid.Column="1">Win</Button>
+                <Button Style="{StaticResource GrayBtn}" Click="InputBtnClick" Grid.Column="2">Alt</Button>
+                <Button Style="{StaticResource RedBtn}" Click="InputBtnClick" Width="120" Background="Bisque" Grid.Column="3">Space</Button>
+                <Button Style="{StaticResource GrayBtn}" Click="InputBtnClick" Grid.Column="4">Alt</Button>
+                <Button Style="{StaticResource GrayBtn}" Click="InputBtnClick" Grid.Column="5">Win</Button>
+                <Button Style="{StaticResource GrayBtn}" Click="InputBtnClick" Grid.Column="6">Ctrl</Button>
+        </Grid>
+        </StackPanel>
+    </StackPanel>
+
+</Window>
