@@ -88,6 +88,7 @@ namespace WpfApp11
             CorrectValue = 0;
             LBFailsNumber.Content = '0';
             Failsvalue = 0;
+            ResultGameDispatcherTimer.Stop();
         }
 
         // Fill Words From Data Controller
